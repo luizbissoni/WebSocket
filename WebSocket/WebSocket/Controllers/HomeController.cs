@@ -13,12 +13,20 @@ namespace WebSocket.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        [HttpPost]
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
         public async Task<ActionResult> HelloWorld()
         {
             var options = new PusherOptions
             {
-                Cluster = "u2",
+                Cluster = "us2",
                 Encrypted = true
             };
 
