@@ -21,8 +21,8 @@ namespace WebSocket.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<ActionResult> HelloWorld()
+        [HttpPost]
+        public async Task<ActionResult> HelloWorld(string mensagem)
         {
             var options = new PusherOptions
             {
@@ -36,7 +36,9 @@ namespace WebSocket.Controllers
                "daf7bc7d66d990f23172",
                     options);
 
-            var result = await pusher.TriggerAsync("my-channel", "my-event", new { message = "Hello World"  });
+            var result = await pusher.TriggerAsync("my-own-chanel", "my-event", new {
+                message = mensagem
+            });
 
             return new HttpStatusCodeResult((int)HttpStatusCode.OK);
         }

@@ -18,7 +18,11 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function (data) {
-            alert(JSON.stringify(data));
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            td.textContent = data.message;
+            tr.appendChild(td);
+            document.getElementById("tabela").appendChild(tr);
         });
     </script>
 </head>
@@ -27,5 +31,18 @@
     <p>
         Try publishing an event to channel <code>my-channel</code>
         with event name <code>my-event</code>.
+        <table>
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                </tr>
+            </thead>
+            <tbody id="tabela"></tbody>
+            <tfoot>
+                <tr>
+                    <td>Nome</td>
+                </tr>
+            </tfoot>
+        </table>
     </p>
 </body>
